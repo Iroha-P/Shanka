@@ -1,9 +1,9 @@
 {
-  "name": "shanka-waiting-deck",
+  "name": "interlude-deck",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A tiny waiting-time learning window with reward gating.",
+  "description": "A Codex-aware microlearning deck with timed reward gating.",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
