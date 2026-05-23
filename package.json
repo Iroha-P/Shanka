@@ -1,0 +1,22 @@
+{
+  "name": "shanka-waiting-deck",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A tiny waiting-time learning window with reward gating.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch:codex": "python scripts/codex_watch.py",
+    "capture:codex": "python scripts/capture_codex_template.py busy",
+    "codex:mode": "python scripts/run_codex_mode.py",
+    "doctor": "python scripts/doctor.py",
+    "screenshots": "electron scripts/capture_screenshots.cjs",
+    "test": "node --test && python -m unittest discover tests",
+    "test:js": "node --test",
+    "test:py": "python -m unittest discover tests"
+  },
+  "devDependencies": {
+    "electron": "^35.7.5"
+  }
+}
