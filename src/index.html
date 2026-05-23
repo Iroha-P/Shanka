@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanka Waiting Deck</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="phone-shell">
+      <section class="phone-screen">
+        <header class="phone-status">
+          <span id="detectorDot" class="detector-dot"></span>
+          <span id="detectorText">等待 Codex 检测器连接</span>
+          <span id="statusText">未开始</span>
+          <button id="settingsButton" class="status-button" title="设置">...</button>
+        </header>
+
+        <section id="card" class="feed-stage" tabindex="0" aria-live="polite">
+          <div class="feed-bg"></div>
+          <div class="feed-overlay"></div>
+
+          <div class="feed-top">
+            <span class="feed-tab active">学习</span>
+            <span class="feed-tab">奖励</span>
+          </div>
+
+          <aside class="feed-actions">
+            <button id="flipButton" class="icon-action" title="翻面">↻</button>
+            <button id="knownButton" class="icon-action primary-icon" title="记住了">✓</button>
+            <button id="fuzzyButton" class="icon-action" title="模糊">?</button>
+          </aside>
+
+          <div class="learning-card">
+            <div class="card-meta">
+              <span id="progressText">0 / 3</span>
+              <div class="settings-row">
+                <label class="setting">
+                  <span>解锁</span>
+                  <select id="unlockAfter">
+                    <option value="2">2 词</option>
+                    <option value="3" selected>3 词</option>
+                    <option value="5">5 词</option>
+                  </select>
+                </label>
+                <label class="setting">
+                  <span>奖励</span>
+                  <select id="rewardSeconds">
+                    <option value="15">15 秒</option>
+                    <option value="30" selected>30 秒</option>
+                    <option value="60">60 秒</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <p id="word" class="word">loading</p>
+            <p id="phonetic" class="phonetic"></p>
+            <div id="answerPanel" class="answer-panel" hidden>
+              <p id="meaning" class="meaning"></p>
+              <p id="example" class="example"></p>
+            </div>
+          </div>
+
+          <div class="feed-caption">
+            <p class="author">@shanka_waiting</p>
+            <h1>背够再刷</h1>
+            <p id="taskHint">开始后才会进入背词和奖励循环。</p>
+            <p id="rewardHint">完成本轮学习后解锁 30 秒。</p>
+          </div>
+        </section>
+
+        <section id="countdownPanel" class="countdown-panel" hidden>
+          <span id="countdownText">30</span>
+          <p>奖励时间，到点自动回到学习窗口</p>
+        </section>
+
+        <footer class="phone-nav">
+          <button id="startTaskButton" class="nav-action primary">开始</button>
+          <button id="pauseTaskButton" class="nav-action" disabled>暂停</button>
+          <button id="resumeTaskButton" class="nav-action" hidden>继续</button>
+          <button id="rewardButton" class="nav-action reward" disabled>打开抖音</button>
+          <button id="endTaskButton" class="nav-action quiet" disabled>结束</button>
+        </footer>
+
+        <section id="settingsSheet" class="settings-sheet" hidden>
+          <div class="sheet-head">
+            <div>
+              <p class="sheet-kicker">Reward Settings</p>
+              <h2>奖励设置</h2>
+            </div>
+            <button id="closeSettingsButton" class="sheet-close" title="关闭">x</button>
+          </div>
+
+          <label class="sheet-field">
+            <span>奖励链接</span>
+            <input id="rewardUrl" type="url" placeholder="https://www.douyin.com">
+          </label>
+
+          <label class="sheet-field">
+            <span>内容模式</span>
+            <select id="contentMode">
+              <option value="vocab">背单词</option>
+              <option value="tech">技术卡</option>
+              <option value="mixed">混合</option>
+            </select>
+          </label>
+
+          <div class="sheet-grid">
+            <label class="sheet-field">
+              <span>解锁词数</span>
+              <select id="sheetUnlockAfter">
+                <option value="2">2 词</option>
+                <option value="3">3 词</option>
+                <option value="5">5 词</option>
+              </select>
+            </label>
+            <label class="sheet-field">
+              <span>奖励时长</span>
+              <select id="sheetRewardSeconds">
+                <option value="15">15 秒</option>
+                <option value="30">30 秒</option>
+                <option value="60">60 秒</option>
+              </select>
+            </label>
+          </div>
+
+          <p id="settingsError" class="settings-error" hidden></p>
+          <button id="saveSettingsButton" class="sheet-save">保存</button>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="./renderer.js"></script>
+  </body>
+</html>
