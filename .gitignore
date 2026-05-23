@@ -1,0 +1,5 @@
+node_modules/
+.superpowers/
+__pycache__/
+*.pyc
+data/detector/busy*.png
